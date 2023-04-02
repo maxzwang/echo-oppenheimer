@@ -10,4 +10,3 @@ git+https://github.com/openai/whisper.git
 torch
 flask
 flask_cors
-googlemaps
