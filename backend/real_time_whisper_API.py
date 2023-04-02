@@ -3,6 +3,7 @@ import os
 import speech_recognition as sr
 import openai
 import wave
+from dotenv import load_dotenv
 
 from datetime import datetime, timedelta
 from queue import Queue
@@ -58,6 +59,7 @@ def main(energy_threshold: int = 600, record_timeout: float = 2, phrase_timeout:
         data_queue.put(data)
     
     def whisperAPI(filename):
+        load_dotenv()
         openai.api_key = os.getenv("OPENAI_API_KEY")
         audio_file = open(filename, "rb")
         transcript = openai.Audio.transcribe("whisper-1", audio_file)
